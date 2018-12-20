@@ -9,11 +9,11 @@ public class AppTest {
   @Test
   public void successfulResponse() {
     App app = new App();
-    String result = app.handleRequest(new infRequete(3.0, "EUR,USD"), null);
-    String content = result;
-    System.out.println(content);
-    assertTrue(content.contains("\"EUR\""));
-    assertTrue(content.contains("\"USD\""));
-    assertTrue(content.contains("\"bitcoinAmount\""));
+    infRequete result = app.handleRequest(new infRequete(3.0, "EUR,USD"), null);
+    //String content = result;
+    //System.out.println(content);
+    assertTrue(result.getBitcoinAmount()== 3.0);
+    //assertTrue(content.contains("\"USD\""));
+    //assertTrue(content.contains("\"bitcoinAmount\""));
   }
 }

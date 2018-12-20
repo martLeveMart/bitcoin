@@ -19,7 +19,7 @@ import com.owlike.genson.GensonBuilder;
  */
 public class App implements RequestHandler<infRequete, Object> {
 
-    public String handleRequest(final infRequete input, final Context context) {
+    public infRequete handleRequest(final infRequete input, final Context context) {
         Map<String, String> headers = new HashMap<>();
         headers.put("Content-Type", "application/json");
         headers.put("X-Custom-Header", "application/json");
@@ -30,13 +30,14 @@ public class App implements RequestHandler<infRequete, Object> {
             //coursBitcoin courForUser = new coursBitcoin(monnaieToConvert,nbBitcoin,courActu);
             coursBitcoin courForUser = new coursBitcoin(input.getCurrencyList(),input.getBitcoinAmount(),courActu);
             infRequete repForUser = new infRequete(input.getBitcoinAmount(),courForUser);
+            return repForUser;
 
-            Gson gson = new Gson();
+            /*Gson gson = new Gson();
             String json = gson.toJson(repForUser);
             System.out.println(json);
-            return json;
+            return json;*/
         } catch (IOException e) {
-            return "{}";
+            return new infRequete();
         }
     }
 
